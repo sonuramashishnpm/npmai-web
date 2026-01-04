@@ -190,7 +190,7 @@
         
         <h3>NPM-Youtube Automation</h3>
         <p>Automate YouTube workflows powered by NPMAI.</p>
-        <a href="https://github.com/sonuramashishnpm/NPM-Youtube-Automation" target="_blank" rel="noopener">View Project</a>
+        <a href="https://npmytautomation.onrender.com" target="_blank" rel="noopener">View Project</a>
       </div>
 
       <div class="project-card">
@@ -211,13 +211,13 @@
         
         <h3>NPM-AutoCode-AI</h3>
         <p>Code generation and automation using NPMAI.</p>
-        <a href="https://github.com/sonuramashishnpm/NPM-AutoCode-AI" target="_blank" rel="noopener">View Project</a>
+        <a href="https://npmcodeai.onrender.com" target="_blank" rel="noopener">View Project</a>
       </div>
 
       <div class="project-card">
         <h3>NPMVoiceAI</h3>
         <p>Voice-powered AI applications via NPMAI.</p>
-        <a href="https://npmvoiceaiweb.onrender.com" target="_blank" rel="noopener">View Project</a>
+        <a href="https://npmvoiceai.onrender.com" target="_blank" rel="noopener">View Project</a>
       </div>
 
       <div class="project-card">
@@ -244,7 +244,7 @@
         
         <h3>NPM AI ChatBot</h3>
         <p>Chat with AI using NPMAI backend.</p>
-        <a href="https://npmexplorer.netlify.app/npmai" target="_blank" rel="noopener">Visit App</a>
+        <a href="https://npmexplorer.onrender.app/npmai" target="_blank" rel="noopener">Visit App</a>
       </div>
     </div>
   </section>
@@ -252,8 +252,8 @@
   <!-- PyPI Section -->
   <section class="counter-section" aria-labelledby="pypi">
     <h2 id="pypi" class="section-title">NPMAI on PyPI</h2>
-    <p>Python package for easy LLM integration. 3k+ installations.</p>
-    <div class="counter">3,000+</div>
+    <p>Python package for easy LLM integration. 4k+ installations.</p>
+    <div class="counter">4,022+</div>
     <p>Install via <a href="https://pypi.org/project/npmai" target="_blank" rel="noopener">PyPI</a> | Stats: <a href="https://pepy.tech/project/npmai" target="_blank" rel="noopener">Pepy.tech</a></p>
   </section>
 
@@ -286,11 +286,13 @@ pip install npmai
 # Basic usage
 from npmai import Ollama
 
-llm = Ollama()
+llm = Ollama(
+        model="llama3.2",
+        temperature=0.7
+)
 prompts = "Hello, tell me a short summary of NPMAI"
-model = "llama3.2"
 
-result = llm.invoke(prompts, model)
+result = llm.invoke(prompts)
 print(result)
       </pre>
     </div>
@@ -300,40 +302,48 @@ print(result)
 # Using temperature
 from npmai import Ollama
 
-llm = Ollama()
-result = llm.invoke("Explain recursion", "llama3.2", temperature=0.8)
+llm = Ollama(
+        model="llama3.2",
+        temperature=0.7 # here passs your temperature parameter
+)
+prompts = "Hello, tell me a short summary of NPMAI"
+
+result = llm.invoke(prompts)
 print(result)
       </pre>
     </div>
 
     <div class="code-block" style="display:none;">
       <pre>
-# Streaming responses
+# Validated Schemas
 from npmai import Ollama
 
-llm = Ollama()
-for chunk in llm.invoke("Stream me output", "llama3.2", streaming=True):
-    print(chunk, end="")
+llm = Ollama(
+        model="llama3.2",
+        temperature=0.7,
+        validate_schema=#Here pass yor schema
+)
+prompts = "Hello, tell me a short summary of NPMAI"
+
+result = llm.invoke(prompts)
+print(result)
       </pre>
     </div>
-
-    <div class="code-block" style="display:none;">
-      <pre>
-# Temperature + streaming
-from npmai import Ollama
-
-llm = Ollama()
-for chunk in llm.invoke("Generate a poem", "llama3.2", temperature=0.7, streaming=True):
-    print(chunk, end="")
-      </pre>
-    </div>
+    
 
     <div class="code-block" style="display:none;">
       <pre>
 # CodeLLaMA-Instruct 7B
 from npmai import Ollama
-llm = Ollama()
-print(llm.invoke("Refactor this function", "codellama:7b-instruct"))
+
+llm = Ollama(
+        model="codellama:7b-instruct",
+        temperature=0.7
+)
+prompts = "Hello, tell me a short summary of NPMAI"
+
+result = llm.invoke(prompts)
+print(result)
       </pre>
     </div>
 
@@ -341,8 +351,15 @@ print(llm.invoke("Refactor this function", "codellama:7b-instruct"))
       <pre>
 # Gemma-2-Instruct 9B
 from npmai import Ollama
-llm = Ollama()
-print(llm.invoke("Summarize this article", "gemma2:9b"))
+
+llm = Ollama(
+        model="gemma2:9b",
+        temperature=0.7
+)
+prompts = "Hello, tell me a short summary of NPMAI"
+
+result = llm.invoke(prompts)
+print(result)
       </pre>
     </div>
 
@@ -350,8 +367,15 @@ print(llm.invoke("Summarize this article", "gemma2:9b"))
       <pre>
 # Mistral 7B Instruct
 from npmai import Ollama
-llm = Ollama()
-print(llm.invoke("Explain transformers", "mistral:7b"))
+
+llm = Ollama(
+        model="mistral:7b",
+        temperature=0.7
+)
+prompts = "Hello, tell me a short summary of NPMAI"
+
+result = llm.invoke(prompts)
+print(result)
       </pre>
     </div>
 
@@ -359,8 +383,15 @@ print(llm.invoke("Explain transformers", "mistral:7b"))
       <pre>
 # Qwen-2.5-Coder 7B
 from npmai import Ollama
-llm = Ollama()
-print(llm.invoke("Write a Python script", "qwen2.5-coder:7b"))
+
+llm = Ollama(
+        model="qwen2.5-coder:7b",
+        temperature=0.7
+)
+prompts = "Hello, tell me a short summary of NPMAI"
+
+result = llm.invoke(prompts)
+print(result) 
       </pre>
     </div>
 
@@ -368,8 +399,15 @@ print(llm.invoke("Write a Python script", "qwen2.5-coder:7b"))
       <pre>
 # Phi-3 Medium (8B)
 from npmai import Ollama
-llm = Ollama()
-print(llm.invoke("Translate to Spanish", "phi3:medium"))
+
+llm = Ollama(
+        model="phi3:medium",
+        temperature=0.7
+)
+prompts = "Hello, tell me a short summary of NPMAI"
+
+result = llm.invoke(prompts)
+print(result)
       </pre>
     </div>
 
@@ -377,8 +415,15 @@ print(llm.invoke("Translate to Spanish", "phi3:medium"))
       <pre>
 # Falcon 7B Instruct
 from npmai import Ollama
-llm = Ollama()
-print(llm.invoke("Create unit tests", "falcon:7b-instruct"))
+
+llm = Ollama(
+        model="falcon:7b-instruct",
+        temperature=0.7
+)
+prompts = "Hello, tell me a short summary of NPMAI"
+
+result = llm.invoke(prompts)
+print(result)
       </pre>
     </div>
 
@@ -386,8 +431,15 @@ print(llm.invoke("Create unit tests", "falcon:7b-instruct"))
       <pre>
 # Baichuan-2 (example)
 from npmai import Ollama
-llm = Ollama()
-print(llm.invoke("Answer this question", "maxkb/baichuan2:13b-chat"))
+
+llm = Ollama(
+        model="maxkb/baichuan2:13b-chat",
+        temperature=0.7
+)
+prompts = "Hello, tell me a short summary of NPMAI"
+
+result = llm.invoke(prompts)
+print(result)
       </pre>
     </div>
 
@@ -395,8 +447,15 @@ print(llm.invoke("Answer this question", "maxkb/baichuan2:13b-chat"))
       <pre>
 # InternLM-Chat-7B
 from npmai import Ollama
-llm = Ollama()
-print(llm.invoke("Give a study plan", "internlm2:7b"))
+
+llm = Ollama(
+        model="internlm2:7b",
+        temperature=0.7
+)
+prompts = "Hello, tell me a short summary of NPMAI"
+
+result = llm.invoke(prompts)
+print(result)
       </pre>
     </div>
 
@@ -404,8 +463,15 @@ print(llm.invoke("Give a study plan", "internlm2:7b"))
       <pre>
 # Vicuna 7B
 from npmai import Ollama
-llm = Ollama()
-print(llm.invoke("Explain quantum computing simply", "vicuna:7b"))
+
+llm = Ollama(
+        model="vicuna:7b",
+        temperature=0.7
+)
+prompts = "Hello, tell me a short summary of NPMAI"
+
+result = llm.invoke(prompts)
+print(result)
       </pre>
     </div>
 
